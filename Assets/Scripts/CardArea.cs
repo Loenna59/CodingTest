@@ -34,7 +34,7 @@ public class CardArea : MonoBehaviour
 
     private float HeightInWorld => m_start.y - m_end.y;
 
-    private void Start()
+    private void OnRectTransformDimensionsChange()
     {
         Bounds bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(m_canvas.transform, m_moveAreaTransform);
         //Debug.LogWarning($"bound min {bounds.min} max {bounds.max} center {bounds.center}");
