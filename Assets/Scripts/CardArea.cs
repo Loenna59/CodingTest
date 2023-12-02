@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CardArea : MonoBehaviour
@@ -10,6 +11,9 @@ public class CardArea : MonoBehaviour
         INTERVAL_BY_MAX_COUNT,     // Area에 최대 들어갈 수 있는 카드수에 따른 위치 지정
         INTERVAL_JUSTIFICATION,    // 좌우 끝 정렬을 통한 카드 위치 지정
     }
+
+    [SerializeField] 
+    private Canvas m_canvas;
     
     [SerializeField] 
     private RectTransform m_moveAreaTransform;
@@ -31,28 +35,15 @@ public class CardArea : MonoBehaviour
 
     private float HeightInWorld => m_start.y - m_end.y;
 
-    private float FixedIntervalInWorld
+    private void Start()
     {
-        get
-        {
-            if (ObjectUtility.IsNullOrDestroyed(m_moveAreaTransform))
-            {
-                return m_fixedInterval;
-            }
+        Bounds bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(m_canvas.transform, m_moveAreaTransform);
+        //Debug.LogWarning($"bound min {bounds.min} max {bounds.max} center {bounds.center}");
 
-            float height = m_moveAreaTransform.sizeDelta.y;
-            
-            return height > 0 ? m_fixedInterval * HeightInWorld / height : m_fixedInterval;
-        }
-    }
+        float x = (bounds.min.x + bounds.max.x) * 0.5f;
 
-    private void OnRectTransformDimensionsChange()
-    {
-        Vector3[] corners = new Vector3[4];
-        m_moveAreaTransform.GetWorldCorners(corners);
-        
-        m_start = corners[1];
-        m_end = corners[3];
+        m_start = new Vector2(x, bounds.max.y);
+        m_end = new Vector2(x, bounds.min.y);
     }
 
     public Vector2 GetPosition(float cardSize, int totalCount, int index)
@@ -61,7 +52,7 @@ public class CardArea : MonoBehaviour
         switch (m_type)
         {
             case CardArrangeType.INTERVAL_FIXED:
-                y = m_start.y - FixedIntervalInWorld * index;
+                y = m_start.y - m_fixedInterval * index;
                 break;
             case CardArrangeType.INTERVAL_BY_MAX_COUNT:
                 y = m_start.y - (HeightInWorld - cardSize) / (m_maxCardCount - 1) * index;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,21 @@ public class CardViewer : MonoBehaviour
     public Text LevelText;
     public Image Image;
 
-    private float m_heightInWorld;
-    public float HeightInWorld => m_heightInWorld;
-    
+    private float m_height;
+
+    public float Height => m_height;
+
+    private void Start()
+    {
+        if (!ObjectUtility.IsNullOrDestroyed(gameObject))
+        {
+            if (gameObject.TryGetComponent<RectTransform>(out RectTransform rectTransform))
+            {
+                m_height = rectTransform.sizeDelta.y;
+            }
+        }
+    }
+
     public static void LoadPrefab()
     {
         // ResourceMgr에서 해야 하는 부분
@@ -53,16 +66,6 @@ public class CardViewer : MonoBehaviour
         viewer.Set(name, level, image);
 
         return viewer;
-    }
-
-    private void OnRectTransformDimensionsChange()
-    {
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        
-        Vector3[] corners = new Vector3[4];
-        rectTransform.GetWorldCorners(corners);
-        
-        m_heightInWorld = corners[1].y - corners[3].y;
     }
 
     private void Set(string name, int level, string image)

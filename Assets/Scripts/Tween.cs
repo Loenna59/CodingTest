@@ -43,7 +43,7 @@ public class Tween
                 continue;
             }
             
-            LTDescr descr = LeanTween.move(cardViewer.gameObject, destArea.GetPosition(cardViewer.HeightInWorld, cardViewers.Count, index), duration);
+            LTDescr descr = LeanTween.moveLocal(cardViewer.gameObject, destArea.GetPosition(cardViewer.Height, cardViewers.Count, index), duration);
             m_uniqueIds.Add(descr.uniqueId);
             Sequence.append(descr).append(delay - duration);
             index++;
