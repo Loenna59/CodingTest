@@ -26,7 +26,7 @@ public class TweenQueue : Tween
         m_queue = new();
     }
     
-    public override void Play(List<CardViewer> cardViewers, CardArea cardArea, float duration, float delay)
+    public override void Play(List<CardViewer> cardViewers, CardArea cardArea, float duration, float delay, bool isEnableDuplicatedCall = false)
     {
         m_queue.Enqueue(new TweenData(LeanTween.sequence(), cardArea));
         
@@ -48,10 +48,13 @@ public class TweenQueue : Tween
             m_isTweening = true;
             TweenData data = m_queue.Dequeue();
 
-            if (m_currentArea == data.Destination)
+            if (!isEnableDuplicatedCall)
             {
-                TryDequeue();
-                return;
+                if (m_currentArea == data.Destination)
+                {
+                    TryDequeue();
+                    return;
+                }
             }
 
             m_currentArea = data.Destination;

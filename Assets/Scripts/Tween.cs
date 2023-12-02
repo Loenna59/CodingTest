@@ -27,7 +27,7 @@ public class Tween
         m_uniqueIds.Clear();
     }
 
-    public virtual void Play(List<CardViewer> cardViewers, CardArea destArea, float duration, float delay)
+    public virtual void Play(List<CardViewer> cardViewers, CardArea destArea, float duration, float delay, bool isEnableDuplicatedCall = false)
     {
         CreateSequence(LeanTween.sequence());
         PlayInternal(cardViewers, destArea, duration, delay);

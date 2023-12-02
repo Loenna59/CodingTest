@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_cardViewers: []
   m_duration: 0.5
   m_cardMovingIntervalTime: 0.1
+  m_isEnableDuplicatedCall: 0
 --- !u!114 &1706460348
 MonoBehaviour:
   m_ObjectHideFlags: 0

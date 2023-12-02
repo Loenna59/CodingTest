@@ -29,6 +29,10 @@ public class CodingTest : MonoBehaviour
     [Tooltip("카드 간의 이동 시간 간격")]
     private float m_cardMovingIntervalTime = 0.1f;
     
+    [SerializeField] 
+    [Tooltip("같은 버튼 연타에 대한 동작 적용 허용")]
+    private bool m_isEnableDuplicatedCall = false;
+    
     public class Card
     {
         public string Name, Image;
@@ -102,21 +106,21 @@ public class CodingTest : MonoBehaviour
 
     public void OnButton1Click()
     {
-        m_tweenController.Play(m_cardViewers, m_area1, m_duration, m_cardMovingIntervalTime, TweenController.TweenType.Immediately);
+        m_tweenController.Play(m_cardViewers, m_area1, m_duration, m_cardMovingIntervalTime, m_isEnableDuplicatedCall, TweenController.TweenType.Immediately);
     }
     
     public void OnButton2Click()
     {
-        m_tweenController.Play(m_cardViewers, m_area2, m_duration, m_cardMovingIntervalTime, TweenController.TweenType.Immediately);
+        m_tweenController.Play(m_cardViewers, m_area2, m_duration, m_cardMovingIntervalTime, m_isEnableDuplicatedCall, TweenController.TweenType.Immediately);
     }
     
     public void OnButton3Click()
     {
-        m_tweenController.Play(m_cardViewers, m_area1, m_duration, m_cardMovingIntervalTime, TweenController.TweenType.Queueing);
+        m_tweenController.Play(m_cardViewers, m_area1, m_duration, m_cardMovingIntervalTime, m_isEnableDuplicatedCall, TweenController.TweenType.Queueing);
     }
     
     public void OnButton4Click()
     {
-        m_tweenController.Play(m_cardViewers, m_area2, m_duration, m_cardMovingIntervalTime, TweenController.TweenType.Queueing);
+        m_tweenController.Play(m_cardViewers, m_area2, m_duration, m_cardMovingIntervalTime, m_isEnableDuplicatedCall, TweenController.TweenType.Queueing);
     }
 }

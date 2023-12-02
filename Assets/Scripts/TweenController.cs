@@ -33,7 +33,7 @@ public class TweenController
         }
     }
     
-    public void Play(List<CardViewer> cardViewers, CardArea destArea, float duration, float delay, TweenType tweenType)
+    public void Play(List<CardViewer> cardViewers, CardArea destArea, float duration, float delay, bool isEnableDuplicatedCall, TweenType tweenType)
     {
         switch (tweenType)
         {
@@ -58,6 +58,6 @@ public class TweenController
                 m_currentTween = m_tweenQueue;
                 break;
         }
-        m_currentTween.Play(cardViewers, destArea, duration, delay);
+        m_currentTween.Play(cardViewers, destArea, duration, delay, isEnableDuplicatedCall);
     }
 }
