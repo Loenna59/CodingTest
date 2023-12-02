@@ -4,6 +4,7 @@ public class Tween
 {
     public LTSeq Sequence;
     protected List<int> m_uniqueIds;
+    protected CardArea m_currentArea; //중복 위치 이동 방지
 
     public Tween()
     {

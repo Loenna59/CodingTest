@@ -681,7 +681,7 @@ MonoBehaviour:
   m_moveAreaTransform: {fileID: 165819131}
   m_type: 0
   m_maxCardCount: 15
-  m_fixedInterval: 40
+  m_fixedInterval: 65
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveAreaTransform: {fileID: 1105192053}
-  m_type: 2
+  m_type: 0
   m_maxCardCount: 15
-  m_fixedInterval: 40
+  m_fixedInterval: 65

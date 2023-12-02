@@ -4,6 +4,12 @@ public class TweenImmediate : Tween
 {
     public override void Play(List<CardViewer> cardViewers, CardArea cardArea, float duration, float delay)
     {
+        if (m_currentArea == cardArea)
+        {
+            return;
+        }
+        m_currentArea = cardArea;
+        
         if (Sequence != null)
         {
             if (LeanTween.isTweening())

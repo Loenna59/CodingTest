@@ -22,9 +22,9 @@ public class CardArea : MonoBehaviour
     [Tooltip("INTERVAL_BY_MAX_COUNT")]
     private int m_maxCardCount = 15;
     
-    [Range(0, 50)]
+    [Range(0, 70)]
     [Tooltip("INTERVAL_FIXED")]
-    [SerializeField] private float m_fixedInterval = 30.0f;
+    [SerializeField] private float m_fixedInterval = 65.0f;
 
     private Vector2 m_start;
     private Vector2 m_end;

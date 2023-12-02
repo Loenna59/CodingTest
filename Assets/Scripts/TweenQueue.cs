@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class TweenQueue : Tween
 {
-    private struct TweenData
+    private class TweenData
     {
         private LTSeq m_sequence;
         public LTSeq Sequence => m_sequence;
@@ -47,7 +47,14 @@ public class TweenQueue : Tween
             
             m_isTweening = true;
             TweenData data = m_queue.Dequeue();
-            
+
+            if (m_currentArea == data.Destination)
+            {
+                TryDequeue();
+                return;
+            }
+
+            m_currentArea = data.Destination;
             CreateSequence(data.Sequence);
             PlayInternal(cardViewers, data.Destination, duration, delay).append(duration - delay).append(TryDequeue);
         }
