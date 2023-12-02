@@ -45,8 +45,8 @@ public class CardArea : MonoBehaviour
             return height > 0 ? m_fixedInterval * HeightInWorld / height : m_fixedInterval;
         }
     }
-    
-    void Start()
+
+    private void OnRectTransformDimensionsChange()
     {
         Vector3[] corners = new Vector3[4];
         m_moveAreaTransform.GetWorldCorners(corners);

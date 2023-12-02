@@ -119,5 +119,4 @@ public class CodingTest : MonoBehaviour
     {
         m_tweenController.Play(m_cardViewers, m_area2, m_duration, m_cardMovingIntervalTime, TweenController.TweenType.Queueing);
     }
-    
 }

@@ -55,7 +55,7 @@ public class CardViewer : MonoBehaviour
         return viewer;
     }
 
-    private void Start()
+    private void OnRectTransformDimensionsChange()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
         
