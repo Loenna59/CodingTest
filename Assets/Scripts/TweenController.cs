@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TweenController
 {
@@ -22,15 +22,8 @@ public class TweenController
     
     private void CreateTween()
     {
-        if (m_tweenImmediate == null)
-        {
-            m_tweenImmediate = new TweenImmediate();
-        }
-
-        if (m_tweenQueue == null)
-        {
-            m_tweenQueue = new TweenQueue();
-        }
+        m_tweenImmediate ??= new TweenImmediate();
+        m_tweenQueue ??= new TweenQueue();
     }
     
     public void Play(List<CardViewer> cardViewers, CardArea destArea, float duration, float delay, bool isEnableDuplicatedCall, TweenType tweenType)
@@ -57,6 +50,8 @@ public class TweenController
                 }
                 m_currentTween = m_tweenQueue;
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(tweenType), tweenType, null);
         }
         m_currentTween.Play(cardViewers, destArea, duration, delay, isEnableDuplicatedCall);
     }

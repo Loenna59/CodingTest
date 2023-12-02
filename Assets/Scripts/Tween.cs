@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Tween
 {
-    public LTSeq Sequence;
+    protected LTSeq m_sequence;
     protected List<int> m_uniqueIds;
     protected CardArea m_currentArea; //중복 위치 이동 방지
 
@@ -13,7 +13,7 @@ public class Tween
 
     public void Cancel(float delay)
     {
-        Sequence.current.totalDelay = 0f;
+        m_sequence.current.totalDelay = 0f;
             
         for (int i = 0, count = m_uniqueIds.Count; i < count; i++)
         {
@@ -45,19 +45,19 @@ public class Tween
             
             LTDescr descr = LeanTween.moveLocal(cardViewer.gameObject, destArea.GetPosition(cardViewer.Height, cardViewers.Count, index), duration);
             m_uniqueIds.Add(descr.uniqueId);
-            Sequence.append(descr).append(delay - duration);
+            m_sequence.append(descr).append(delay - duration);
             index++;
         }
 
-        return Sequence;
+        return m_sequence;
     }
 
     protected LTSeq CreateSequence(LTSeq seq)
     {
         seq.reset();
         seq.current.totalDelay = 0f;
-        Sequence = seq;
+        m_sequence = seq;
         m_uniqueIds.Clear();
-        return Sequence;
+        return m_sequence;
     }
 }

@@ -13,7 +13,7 @@ public class TweenImmediate : Tween
         }
         m_currentArea = cardArea;
         
-        if (Sequence != null)
+        if (m_sequence != null)
         {
             if (LeanTween.isTweening())
             { 

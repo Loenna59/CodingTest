@@ -1,7 +1,6 @@
 using UnityEngine;
 
 using System.Collections.Generic;
-using UnityEngine.Serialization;
 
 public class CodingTest : MonoBehaviour
 {
@@ -99,6 +98,10 @@ public class CodingTest : MonoBehaviour
         
         foreach (var card in table.Cards)
         {
+            if (card == null)
+            {
+                continue;
+            }
             CardViewer viewer = CardViewer.Create(m_cardDeckRectTransform, card);
             m_cardViewers.Add(viewer);
         }
