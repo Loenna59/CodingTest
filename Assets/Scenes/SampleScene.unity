@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea8a6d59e91ad24994ce94d33738177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canvas: {fileID: 1706460350}
   m_moveAreaTransform: {fileID: 165819131}
   m_type: 0
   m_maxCardCount: 15
@@ -1750,6 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea8a6d59e91ad24994ce94d33738177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canvas: {fileID: 1706460350}
   m_moveAreaTransform: {fileID: 1105192053}
   m_type: 0
   m_maxCardCount: 15
