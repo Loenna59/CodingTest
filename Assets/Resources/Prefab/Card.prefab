@@ -344,6 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584f2aac829f44a539df9cc07a65407d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  levelText: {fileID: 0}
-  Image: {fileID: 0}
+  NameText: {fileID: 8747519745355801763}
+  LevelText: {fileID: 7400358475364013637}
+  Image: {fileID: 8559895012978591591}
